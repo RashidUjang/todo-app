@@ -19,18 +19,43 @@
     <title>To do App</title>
   </head>
   <body>
+    <nav class="navbar bg-primary text-white">
+      <a href="" class="navbar-brand">TodoApp</a>
+      <ul class="nav">
+        <li class="nav-item">
+          <a href="" class="nav-link">Item 1</a>
+        </li>
+        <li class="nav-item">
+          <a href="" class="nav-link">Item 2</a>
+        </li>
+      </ul>
+    </nav>
     <div class="wrapper">
       <nav id="sidebar">
         <div class="sidebar-header container">
-          <h3>To Do List</h3>
           <ul class="list-unstyled">
             <li>
               <button
-                class="dropdown-toggle"
+                class="dropdown-toggle menu-item"
                 data-toggle="collapse"
                 data-target="#home-submenu"
               >
                 Lists
+              </button>
+              <button type="button" class="btn btn-outline-primary btn-sm">
+                <svg
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 16 16"
+                  class="bi bi-plus"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                  />
+                </svg>
               </button>
               <ul class="collapse list-unstyled" id="home-submenu">
                 <li>
@@ -45,40 +70,12 @@
               </ul>
             </li>
             <li>
-              <button type="button">About</button>
+              <button class="menu-item" type="button">About</button>
             </li>
           </ul>
         </div>
       </nav>
       <div class="container" id="content">
-        <nav class="navbar">
-          <button type="button" id="sidebarCollapse" class="btn btn-info">
-            Toggle Sidebar
-          </button>
-          <a href="" class="navbar-brand">TodoApp</a>
-          <ul class="nav">
-            <li class="nav-item">
-              <a href="" class="nav-link">Item 1</a>
-            </li>
-            <li class="nav-item">
-              <a href="" class="nav-link">Item 2</a>
-            </li>
-          </ul>
-        </nav>
-        <div class="dropdown">
-          <button
-            class="btn btn-primary dropdown-toggle"
-            data-toggle="dropdown"
-          >
-            Issa Button
-          </button>
-          <div class="dropdown-menu">
-            <a href="" class="dropdown-item">Bloop</a>
-            <div class="dropdown-divider"></div>
-            <a href="" class="dropdown-item active">I'm an active button</a>
-            <a href="" class="dropdown-item disabled">I'm a disabled button</a>
-          </div>
-        </div>
         <div class="title">
           <h1>
             List 1
@@ -101,8 +98,10 @@
         </div>
         <div class="list">
           <div class="list-item border-bottom">
-            <input type="checkbox" class="item-list-checkbox" name="" id="" />
-            <p>I'm an Item</p>
+            <div>
+              <input type="checkbox" class="item-list-checkbox" name="" id="" />
+              <p>I'm an Item</p>
+            </div>
             <div class="icon-container">
               <button class="icon-button">
                 <svg
@@ -161,5 +160,6 @@
       integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
       crossorigin="anonymous"
     ></script>
+    <script src="main.js"></script>
   </body>
 </html>
