@@ -2,6 +2,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.list {
+    background-color: white;
 }
 
 .list-item p{
@@ -43,4 +48,27 @@
 .navbar * {
     color: inherit;
     max-height: 3rem;
+}
+
+h1 span:focus {
+    outline: none;
+    border-bottom: #e1e5eb33
+}
+
+.list-unstyled li div {
+    display: flex;
+    justify-content: space-between;
+}
+
+input[type="checkbox"] {
+
+}
+
+#sidebar div ul li:hover {
+    background-color: white;
+    border-radius: 6px;
+}
+
+#sidebar div ul > li {
+
 }

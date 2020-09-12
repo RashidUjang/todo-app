@@ -35,28 +35,30 @@
         <div class="sidebar-header container">
           <ul class="list-unstyled">
             <li>
-              <button
-                class="dropdown-toggle menu-item"
-                data-toggle="collapse"
-                data-target="#home-submenu"
-              >
-                Lists
-              </button>
-              <button type="button" class="btn btn-outline-primary btn-sm">
-                <svg
-                  width="1em"
-                  height="1em"
-                  viewBox="0 0 16 16"
-                  class="bi bi-plus"
-                  fill="currentColor"
-                  xmlns="http://www.w3.org/2000/svg"
+              <div>
+                <button
+                  class="dropdown-toggle menu-item"
+                  data-toggle="collapse"
+                  data-target="#home-submenu"
                 >
-                  <path
-                    fill-rule="evenodd"
-                    d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
-                  />
-                </svg>
-              </button>
+                  Lists
+                </button>
+                <button type="button" class="btn add-list-button">
+                  <svg
+                    width="1em"
+                    height="1em"
+                    viewBox="0 0 16 16"
+                    class="bi bi-plus"
+                    fill="currentColor"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"
+                    />
+                  </svg>
+                </button>
+              </div>
               <ul class="collapse list-unstyled" id="home-submenu">
                 <li>
                   <a href="">List 1</a>
@@ -78,8 +80,8 @@
       <div class="container" id="content">
         <div class="title">
           <h1>
-            List 1
-            <button class="icon-button">
+            <span>List 1</span>
+            <button class="icon-button" id="list-edit-button">
               <svg
                 width="1em"
                 height="1em"
@@ -138,7 +140,7 @@
               </button>
             </div>
           </div>
-          <button class="btn btn-primary">Add</button>
+          <button class="btn btn-primary" id="add-item-button">Add</button>
         </div>
       </div>
     </div>
