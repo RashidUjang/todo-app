@@ -1,74 +1,74 @@
 .list-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
 }
 
 .list {
-    background-color: white;
+  background-color: white;
 }
 
-.list-item p{
-    margin-bottom: 0px;
-    display: inline;
+.list-item p {
+  display: inline;
 }
 
 .icon-button {
-    background-color: transparent;
-    border: none;
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
 }
 
 .icon-button:focus {
-    outline: none;
+  outline: none;
 }
 
 .icon-button:hover {
-    background-color: rgba(233, 233, 233, 0.986);
+  background-color: rgba(233, 233, 233, 0.986);
 }
 
 .wrapper {
-    display: flex;
-    width: 100%;
-    align-items: stretch;
+  display: flex;
+  width: 100%;
+  align-items: stretch;
 }
 
 #sidebar {
-    min-width: 250px;
-    max-width: 350px;
-    background-color: #e1e5eb33;
-    height: calc(100vh - 3rem);
+  min-width: 250px;
+  max-width: 350px;
+  background-color: #e1e5eb33;
+  height: calc(100vh - 3rem);
 }
 
 .menu-item {
-    border: 0;
-    background-color: transparent;
+  border: 0;
+  background-color: transparent;
 }
 
 .navbar * {
-    color: inherit;
-    max-height: 3rem;
+  color: inherit;
+  max-height: 3rem;
 }
 
 h1 span:focus {
-    outline: none;
-    border-bottom: #e1e5eb33
+  outline: none;
+  border-bottom: #e1e5eb33;
 }
 
 .list-unstyled li div {
-    display: flex;
-    justify-content: space-between;
-}
-
-input[type="checkbox"] {
-
+  display: flex;
+  justify-content: space-between;
 }
 
 #sidebar div ul li:hover {
-    background-color: white;
-    border-radius: 6px;
+  background-color: white;
+  border-radius: 6px;
 }
 
-#sidebar div ul > li {
+/* Renders svg elements as unable to be the receiver of events, ensuring the target of the delete button
+    event as the button instead of the path or event. Alternate way is to create a masking rectangle
+    and for that to be clickable instead */
 
+svg {
+  pointer-events: none;
 }
