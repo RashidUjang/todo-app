@@ -27,6 +27,10 @@
   background-color: rgba(233, 233, 233, 0.986);
 }
 
+.icon-container {
+  visibility: hidden;
+}
+
 .wrapper {
   display: flex;
   width: 100%;
@@ -73,6 +77,6 @@ svg {
   pointer-events: none;
 }
 
-.summary {
+#summary {
   color: rgba(0, 0, 0, 0.466);
 }

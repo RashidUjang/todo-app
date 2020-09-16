@@ -1,14 +1,18 @@
 let deletableItem;
+let summaryCountTotal = 1;
+let summaryCountChecked = 0; // TODO: Initialize this variable
 
 // Get elements to attach listeners to
 const editButton = document.querySelector("#list-edit-button");
 const title = document.querySelector("h1 span");
 const addButton = document.getElementById("add-item-button");
-const listItem = document.getElementsByClassName("list-item")[0];
+const listItem = [...document.getElementsByClassName("list-item")];
 const deleteButton = [...document.getElementsByClassName("delete-button")];
 const deleteButtonModal = document.getElementById("delete-button-modal");
 const checkbox = [...document.getElementsByTagName("input")];
-const addListButton = document.getElementById('add-list-button');
+const addListButton = document.getElementById("add-list-button");
+const addListButtonModal = document.getElementById("add-list-button-modal");
+const summary = document.getElementById('summary');
 
 // Set event listeners
 editButton.addEventListener("click", setEditMode);
@@ -21,16 +25,25 @@ deleteButtonModal.addEventListener("click", deleteItem);
 checkbox.forEach((val, ind, arr) => {
   val.addEventListener("click", setCheckedBehaviour);
 });
-addListButton.addEventListener('click', addListModal);
+addListButton.addEventListener("click", addListModal);
+addListButtonModal.addEventListener("click", addList);
+listItem.forEach((val, ind, arr) => {
+  val.addEventListener("mouseover", showIcon);
+  val.addEventListener("mouseout", hideIcon);
+});
 
 // Callback functions for listeners
 function setCheckedBehaviour(e) {
   if (e.target.checked) {
     e.target.nextElementSibling.style.textDecoration = "line-through";
     e.target.nextElementSibling.style.color = "#00000077";
+    summaryCountChecked++;
+    updateSummary();
   } else {
     e.target.nextElementSibling.style.color = "inherit";
     e.target.nextElementSibling.style.textDecoration = "solid";
+    summaryCountChecked--;
+    updateSummary();
   }
 }
 
@@ -48,7 +61,7 @@ function setReadMode(e) {
 }
 
 function addItem(e) {
-  let newItem = listItem.cloneNode(true);
+  let newItem = listItem[0].cloneNode(true);
 
   // Setting up the object
   newItem.querySelector(".item-description").innerHTML = "";
@@ -64,6 +77,8 @@ function addItem(e) {
     .getElementsByTagName("input")[0]
     .addEventListener("click", setCheckedBehaviour);
   newItem.getElementsByTagName("input")[0].checked = false;
+  newItem.addEventListener("mouseover", showIcon);
+  newItem.addEventListener("mouseout", hideIcon);
 
   // Inserting the element into the DOM
   document
@@ -72,6 +87,9 @@ function addItem(e) {
 
   // Placed after the get Elements By Class Name to allow the focusing to happen only after the element has been created
   newItem.querySelector(".item-description").focus();
+
+  summaryCountTotal++;
+  updateSummary();
 }
 
 function deleteModal(e) {
@@ -82,8 +100,31 @@ function deleteModal(e) {
 
 function deleteItem(e) {
   deletableItem.remove();
+  summaryCountTotal--;
+  
+  if (deletableItem.getElementsByTagName('input')[0].checked) {
+    summaryCountChecked--;
+  }
+  
+  updateSummary();
 }
 
 function addListModal(e) {
   $("#modal-add-list").modal("toggle");
+}
+
+function addList(e) {
+  console.log("List added!");
+}
+
+function showIcon(e) {
+  e.target.querySelector(".icon-container").style.visibility = "visible";
+}
+
+function hideIcon(e) {
+  e.target.querySelector(".icon-container").style.visibility = "hidden";
+}
+
+function updateSummary() {
+  summary.innerHTML = `${summaryCountChecked} / ${summaryCountTotal} Completed`;
 }
