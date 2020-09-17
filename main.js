@@ -2,8 +2,8 @@ let deletableItem;
 let summaryCountTotal = 1; 
 let summaryCountChecked = 0; 
 
-// Get elements to attach listeners to
-const editButton = document.querySelector("#list-edit-button");
+// Get elements to attach listeners
+const listEditButton = document.querySelector("#list-edit-button");
 const title = document.querySelector("h1 span");
 const addButton = document.getElementById("add-item-button");
 const listItem = [...document.getElementsByClassName("list-item")];
@@ -13,20 +13,37 @@ const checkbox = [...document.getElementsByTagName("input")];
 const addListButton = document.getElementById("add-list-button");
 const addListButtonModal = document.getElementById("add-list-button-modal");
 const summary = document.getElementById('summary');
+const itemEditButton = [...document.getElementsByClassName('edit-button')];
+const itemDescription = [...document.getElementsByClassName('item-description')];
 
 // Set event listeners
-editButton.addEventListener("click", setEditMode);
-title.addEventListener("blur", setReadMode);
-addButton.addEventListener("click", addItem);
+// Read and edit mode for list title
+listEditButton.addEventListener("click", setEditModeTitle);
+title.addEventListener("blur", setReadModeTitle);
+
+// Read and edit Mode for item description
+itemEditButton.forEach((val, ind, arr) => {
+  val.addEventListener('click', setEditModeItem);
+})
+itemDescription.forEach((val, ind, arr) => {
+  val.addEventListener('blur', setReadModeItem);
+})
+
+// Delete button and modal
 deleteButton.forEach((val, ind, array) => {
   val.addEventListener("click", deleteModal);
 });
 deleteButtonModal.addEventListener("click", deleteItem);
+
+// Add new list button and modal
+addListButton.addEventListener("click", addListModal);
+addListButtonModal.addEventListener("click", addList);
+
+addButton.addEventListener("click", addItem);
 checkbox.forEach((val, ind, arr) => {
   val.addEventListener("click", setCheckedBehaviour);
 });
-addListButton.addEventListener("click", addListModal);
-addListButtonModal.addEventListener("click", addList);
+
 listItem.forEach((val, ind, arr) => {
   val.addEventListener("mouseenter", showIcon);
   val.addEventListener("mouseleave", hideIcon);
@@ -47,17 +64,17 @@ function setCheckedBehaviour(e) {
   }
 }
 
-function setEditMode(e) {
-  editButton.style.visibility = "hidden";
+function setEditModeTitle(e) {
+  listEditButton.style.visibility = "hidden";
   title.contentEditable = true;
   title.style.borderBottom = "1px solid black";
   title.focus();
 }
 
-function setReadMode(e) {
+function setReadModeTitle(e) {
   title.contentEditable = false;
   title.style.borderBottom = "";
-  editButton.style.visibility = "visible";
+  listEditButton.style.visibility = "visible";
 }
 
 function addItem(e) {
@@ -125,6 +142,16 @@ function hideIcon(e) {
   e.target.querySelector(".icon-container").style.visibility = "hidden";
 }
 
+function setEditModeItem(e) {
+  e.target.parentElement.previousElementSibling.lastElementChild.contentEditable = true;
+  e.target.parentElement.previousElementSibling.lastElementChild.focus();
+}
+
+function setReadModeItem(e) {
+  e.target.contentEditable = false;
+}
+
+// updateSummary() is a function on its own for any future cleanups that may need to happen when updating the value
 function updateSummary() {
   summary.innerHTML = `${summaryCountChecked} / ${summaryCountTotal} Completed`;
 }

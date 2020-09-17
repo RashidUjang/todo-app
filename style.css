@@ -80,3 +80,15 @@ svg {
 #summary {
   color: rgba(0, 0, 0, 0.466);
 }
+
+#add-list-button:hover, #add-list-button:focus, #add-list-button:active{
+  outline: none;
+  box-shadow: none; 
+}
+
+/* The below is needed to change the SVG fill upon the different states. Simply changing the color element is not enough. 
+Changing the buttons */
+#add-list-button:hover svg, #add-list-button:focus svg, #add-list-button:active svg{
+  fill: black;
+}
+
