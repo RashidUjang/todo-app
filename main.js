@@ -1,6 +1,6 @@
 let deletableItem;
-let summaryCountTotal = 1;
-let summaryCountChecked = 0; // TODO: Initialize this variable
+let summaryCountTotal = 1; 
+let summaryCountChecked = 0; 
 
 // Get elements to attach listeners to
 const editButton = document.querySelector("#list-edit-button");
@@ -28,8 +28,8 @@ checkbox.forEach((val, ind, arr) => {
 addListButton.addEventListener("click", addListModal);
 addListButtonModal.addEventListener("click", addList);
 listItem.forEach((val, ind, arr) => {
-  val.addEventListener("mouseover", showIcon);
-  val.addEventListener("mouseout", hideIcon);
+  val.addEventListener("mouseenter", showIcon);
+  val.addEventListener("mouseleave", hideIcon);
 });
 
 // Callback functions for listeners
@@ -77,8 +77,8 @@ function addItem(e) {
     .getElementsByTagName("input")[0]
     .addEventListener("click", setCheckedBehaviour);
   newItem.getElementsByTagName("input")[0].checked = false;
-  newItem.addEventListener("mouseover", showIcon);
-  newItem.addEventListener("mouseout", hideIcon);
+  newItem.addEventListener("mouseenter", showIcon);
+  newItem.addEventListener("mouseleave", hideIcon);
 
   // Inserting the element into the DOM
   document
