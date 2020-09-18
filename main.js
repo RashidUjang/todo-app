@@ -1,6 +1,9 @@
+// Object to store the item to be deleted. Purpose is to pass this object from the listener on the item itself to the trigger point on the modal
 let deletableItem;
-let summaryCountTotal = 1; 
-let summaryCountChecked = 0; 
+
+// Initialized dummy data for summaryCount
+let summaryCountTotal = 1;
+let summaryCountChecked = 0;
 
 // Get elements to attach listeners
 const listEditButton = document.querySelector("#list-edit-button");
@@ -12,9 +15,12 @@ const deleteButtonModal = document.getElementById("delete-button-modal");
 const checkbox = [...document.getElementsByTagName("input")];
 const addListButton = document.getElementById("add-list-button");
 const addListButtonModal = document.getElementById("add-list-button-modal");
-const summary = document.getElementById('summary');
-const itemEditButton = [...document.getElementsByClassName('edit-button')];
-const itemDescription = [...document.getElementsByClassName('item-description')];
+const summary = document.getElementById("summary");
+const itemEditButton = [...document.getElementsByClassName("edit-button")];
+const itemDescription = [
+  ...document.getElementsByClassName("item-description"),
+];
+const editableFields = [...document.getElementsByClassName("editable")];
 
 // Set event listeners
 // Read and edit mode for list title
@@ -23,11 +29,11 @@ title.addEventListener("blur", setReadModeTitle);
 
 // Read and edit Mode for item description
 itemEditButton.forEach((val, ind, arr) => {
-  val.addEventListener('click', setEditModeItem);
-})
+  val.addEventListener("click", setEditModeItem);
+});
 itemDescription.forEach((val, ind, arr) => {
-  val.addEventListener('blur', setReadModeItem);
-})
+  val.addEventListener("blur", setReadModeItem);
+});
 
 // Delete button and modal
 deleteButton.forEach((val, ind, array) => {
@@ -47,6 +53,10 @@ checkbox.forEach((val, ind, arr) => {
 listItem.forEach((val, ind, arr) => {
   val.addEventListener("mouseenter", showIcon);
   val.addEventListener("mouseleave", hideIcon);
+});
+
+editableFields.forEach((val, ind, arr) => {
+  val.addEventListener("keydown", blurElement);
 });
 
 // Callback functions for listeners
@@ -89,13 +99,13 @@ function addItem(e) {
   newItem
     .querySelector(".delete-button")
     .addEventListener("click", deleteModal);
-
   newItem
     .getElementsByTagName("input")[0]
     .addEventListener("click", setCheckedBehaviour);
   newItem.getElementsByTagName("input")[0].checked = false;
   newItem.addEventListener("mouseenter", showIcon);
   newItem.addEventListener("mouseleave", hideIcon);
+  newItem.addEventListener("keydown", blurElement);
 
   // Inserting the element into the DOM
   document
@@ -118,11 +128,11 @@ function deleteModal(e) {
 function deleteItem(e) {
   deletableItem.remove();
   summaryCountTotal--;
-  
-  if (deletableItem.getElementsByTagName('input')[0].checked) {
+
+  if (deletableItem.getElementsByTagName("input")[0].checked) {
     summaryCountChecked--;
   }
-  
+
   updateSummary();
 }
 
@@ -154,4 +164,12 @@ function setReadModeItem(e) {
 // updateSummary() is a function on its own for any future cleanups that may need to happen when updating the value
 function updateSummary() {
   summary.innerHTML = `${summaryCountChecked} / ${summaryCountTotal} Completed`;
+}
+
+function blurElement(e) {
+  if (e.key == "Enter") {
+    e.preventDefault();
+    e.target.blur();
+    console.log(e.key + "hello");
+  }
 }
