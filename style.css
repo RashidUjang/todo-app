@@ -1,3 +1,46 @@
+.navbar * {
+  color: inherit;
+  height: 2rem;
+  /* Override line-height to center text in navbar */
+  line-height: 1;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+}
+
+.wrapper {
+  display: flex;
+  width: 100%;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 350px;
+  background-color: #e1e5eb33;
+  /* 2 rem + 0.5 rem * 2 for padding */
+  height: calc(100vh - 3rem);
+  padding: 0.75rem 0;
+  position: fixed;
+  top: 3rem;
+  left: 0;
+}
+
+#sidebar div ul li:hover {
+  background-color: white;
+  border-radius: 6px;
+}
+
+#content {
+margin-left: 250px;
+}
+
+.list {
+  background-color: white;
+}
+
 .list-item {
   display: flex;
   align-items: center;
@@ -5,12 +48,16 @@
   margin-bottom: 8px;
 }
 
-.list {
-  background-color: white;
-}
-
 .list-item p {
   display: inline;
+}
+
+.item-description {
+  display: block;
+}
+
+.icon-container {
+  visibility: hidden;
 }
 
 .icon-button {
@@ -27,48 +74,6 @@
   background-color: rgba(233, 233, 233, 0.986);
 }
 
-.icon-container {
-  visibility: hidden;
-}
-
-.wrapper {
-  display: flex;
-  width: 100%;
-  align-items: stretch;
-}
-
-#sidebar {
-  min-width: 250px;
-  max-width: 350px;
-  background-color: #e1e5eb33;
-  height: calc(100vh - 3rem);
-}
-
-.menu-item {
-  border: 0;
-  background-color: transparent;
-}
-
-.navbar * {
-  color: inherit;
-  max-height: 3rem;
-}
-
-h1 span:focus {
-  outline: none;
-  border-bottom: #e1e5eb33;
-}
-
-.list-unstyled li div {
-  display: flex;
-  justify-content: space-between;
-}
-
-#sidebar div ul li:hover {
-  background-color: white;
-  border-radius: 6px;
-}
-
 /* Renders svg elements as unable to be the receiver of events, ensuring the target of the delete button
     event as the button instead of the path or event. Alternate way is to create a masking rectangle
     and for that to be clickable instead */
@@ -77,8 +82,27 @@ svg {
   pointer-events: none;
 }
 
+.menu-item {
+  border: 0;
+  background-color: transparent;
+}
+
+h1 span:focus {
+  outline: none;
+  border-bottom: #e1e5eb33;
+}
+
 #summary {
   color: rgba(0, 0, 0, 0.466);
+}
+
+.list-unstyled li div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#add-list-button {
+  padding: 0 0.75rem;
 }
 
 #add-list-button:hover,
@@ -121,6 +145,7 @@ Changing the buttons */
     -webkit-transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
     transition: background 0.3s, border-color 0.3s, box-shadow 0.2s;
     width: 21px;
+    z-index: 0;
   }
   input[type="checkbox"]::after {
     content: "";

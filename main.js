@@ -107,6 +107,9 @@ function addItem(e) {
   newItem.addEventListener("mouseleave", hideIcon);
   newItem.addEventListener("keydown", blurElement);
 
+  newItem.querySelector('.edit-button').addEventListener("click", setEditModeItem);
+  newItem.querySelector('.item-description').addEventListener("blur", setReadModeItem);
+
   // Inserting the element into the DOM
   document
     .getElementsByClassName("list")[0]
@@ -167,9 +170,8 @@ function updateSummary() {
 }
 
 function blurElement(e) {
-  if (e.key == "Enter") {
+  if (e.key == "Enter" || e.key == "Escape") {
     e.preventDefault();
     e.target.blur();
-    console.log(e.key + "hello");
   }
 }
