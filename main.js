@@ -91,7 +91,7 @@ function addItem(e) {
   let newItem = listItem[0].cloneNode(true);
 
   // Setting up the object
-  newItem.querySelector(".item-description").innerHTML = "";
+  newItem.querySelector(".item-description").innerHTML = " ";
   newItem.querySelector(".item-description").contentEditable = true;
 
   // REFACTOR: Adding the EventListener, as the EventListener is not automatically attached. Refactor with the below by using event delegation
