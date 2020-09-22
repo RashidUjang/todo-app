@@ -21,14 +21,6 @@
   <body>
     <nav class="navbar bg-primary text-white">
       <a href="" class="navbar-brand">TodoApp</a>
-      <ul class="nav">
-        <li class="nav-item">
-          <a href="" class="nav-link">Item 1</a>
-        </li>
-        <li class="nav-item">
-          <a href="" class="nav-link">Item 2</a>
-        </li>
-      </ul>
     </nav>
     <div class="wrapper">
       <nav id="sidebar">
@@ -66,7 +58,7 @@
               </ul>
             </li>
             <li>
-              <button class="menu-item" type="button">About</button>
+              <button class="menu-item" type="button" id="about-button">About</button>
             </li>
           </ul>
         </div>
@@ -200,6 +192,25 @@
               <button type="submit" class="btn btn-primary" id="add-list-button-modal">Add</button>
             </div>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for About page-->
+    <div class="modal fade" id="modal-about">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5>About</h5>
+            
+            <button type="button" class="close" data-dismiss="modal">
+              <span>&times;</span>
+            </button>
+            
+          </div>
+          <div class="modal-body">
+            <p>This is Todo-App made using vanilla HTML, CSS, Javascript & Bootstrap for learning purposes. Of course the first app anyone makes should be a Todo App!</p>
+          </div>
         </div>
       </div>
     </div>

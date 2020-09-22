@@ -21,6 +21,7 @@ const itemDescription = [
   ...document.getElementsByClassName("item-description"),
 ];
 const editableFields = [...document.getElementsByClassName("editable")];
+const aboutButton = document.getElementById('about-button');
 
 // Set event listeners
 // Read and edit mode for list title
@@ -58,6 +59,8 @@ listItem.forEach((val, ind, arr) => {
 editableFields.forEach((val, ind, arr) => {
   val.addEventListener("keydown", blurElement);
 });
+
+aboutButton.addEventListener('click', aboutModal);
 
 // Callback functions for listeners
 function setCheckedBehaviour(e) {
@@ -126,6 +129,10 @@ function deleteModal(e) {
   $("#modal-delete").modal("toggle");
   // REFACTOR: Find out if it's possible without using a global variable
   deletableItem = e.target.parentElement.parentElement;
+}
+
+function aboutModal(e) {
+  $("#modal-about").modal("toggle");
 }
 
 function deleteItem(e) {
